@@ -1,0 +1,31 @@
+spring:
+  mvc:
+    static-path-pattern: /static/**
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/test
+#    username: root
+#    password: root
+  #配置数据源信息
+  datasource:
+    dynamic:
+      #设置默认的数据源或数据源组，默认值为master
+      primary: test
+      #严格匹配数据源，默认false，true未匹配到指定数据源抛出异常，false使用默认数据源
+      strict: false
+      datasource:
+        test:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/test
+          username: root
+          password: root
+        db1:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/db1
+          username: root
+          password: root
+  redis:
+    client-type: lettuce
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
